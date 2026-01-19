@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 public class Prithee {
 
+    //Sonnet text stored as a single String
     String sonnet;
 
+    //Constructor
     public Prithee(String sonnet) {
         this.sonnet = sonnet;
     }
@@ -29,18 +31,23 @@ public class Prithee {
         p1.performNextLine();
     }
 
+    //Starts the game for user
     public void performNextLine() {
         Scanner scan = new Scanner(System.in);
+
+        //Split the sonnet into an array of words at each comma and space
         String[] words = sonnet.split("[,\\s]+");
-        int correct = 0;
-        int incorrect = 0;
+        int correct = 0; //correct guesses
+        int incorrect = 0; //incorrect guesses
 
         while (correct + incorrect < 3) {
 
+            //Get the correct word and the random word given to user
             int randomIndex = (int) (Math.random() * words.length - 1);
             String nextWord = words[randomIndex + 1];
             String randomWord = words[randomIndex];
 
+            //Create underscores for the hidden word
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < nextWord.length(); i++) {
                 sb.append("_");
@@ -60,6 +67,7 @@ public class Prithee {
         }
     }
 
+    //Checks if user guess is correct
     public boolean checkGuess(String userWord, String correctWord) {
         return userWord.equalsIgnoreCase(correctWord);
     }
