@@ -1,0 +1,12 @@
+
+Prithee
+------------------------
+- sonnet: String
+
+------------------------
++ Prithee(sonnet: String)
++ getSonnet(): String
++ setSonnet(sonnet: String): void
++ performNextLine(): void
++ checkGuess(userWord: String, correctWord: String): boolean
++ toString(): String

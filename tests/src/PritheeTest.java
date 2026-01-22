@@ -22,8 +22,8 @@ class PritheeTest {
     void preformInvalidWord() {
         Prithee p1 = new Prithee("Hello world");
         assertFalse(p1.checkGuess(null, "world"), "Invalid word should return false");
-        }
-
     }
+
+}
 
 

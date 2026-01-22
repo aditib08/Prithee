@@ -32,7 +32,9 @@ public class Prithee {
         Scanner scan = new Scanner(System.in);
 
         //Split the sonnet into an array of words at each comma and space
-        String[] words = sonnet.split("[,;\\s]+");
+        sonnet = sonnet.replace("'", "");
+        String[] words = sonnet.split("[,;.\\s]+");
+
         int correct = 0; //correct guesses
         int incorrect = 0; //incorrect guesses
 
@@ -43,25 +45,36 @@ public class Prithee {
             String nextWord = words[randomIndex + 1];
             String randomWord = words[randomIndex];
 
-            //Create underscores for the hidden word
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < nextWord.length(); i++) {
-                sb.append("_");
+            // Print sonnet up until the random word
+            int index = sonnet.indexOf(randomWord + " " + nextWord);
+            if (index == -1) {
+                index = sonnet.indexOf(randomWord);
             }
-            String underscores = sb.toString();
-
-            //Print sonnet up until the random word
-            int index = sonnet.indexOf(randomWord);
             System.out.print(sonnet.substring(0, index));
-            System.out.println(randomWord + " " + underscores);
+            System.out.print(randomWord);
 
+            // Print underscores for the rest of the sonnet
+            for (int i = index + randomWord.length(); i < sonnet.length(); i++) {
+                char c = sonnet.charAt(i);
+
+                if (c == '\n' || c == ' ' || c == '.' || c == ',' || c == ';') {
+                    System.out.print(c);
+                } else {
+                    System.out.print("_");
+                }
+            }
+
+            System.out.println();
+
+            //Prompt the user for the next word and indicates whether it was correct or incorrect
+            System.out.print("\n" + "Enter a guess for the next word: ");
             String guess = scan.nextLine();
 
             if (checkGuess(guess, nextWord)) {
-                System.out.println("Correct!");
+                System.out.println("Correct!" + "\n");
                 correct++;
             } else {
-                System.out.println("Incorrect!");
+                System.out.println("Incorrect!" + "\n");
                 incorrect++;
             }
         }
