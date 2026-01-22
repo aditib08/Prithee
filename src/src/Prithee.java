@@ -12,6 +12,21 @@ public class Prithee {
         this.sonnet = sonnet;
     }
 
+    @Override
+    public String toString() {
+        return "Prithee{" +
+                "sonnet='" + sonnet + '\'' +
+                '}';
+    }
+
+    public String getSonnet() {
+        return sonnet;
+    }
+
+    public void setSonnet(String sonnet) {
+        this.sonnet = sonnet;
+    }
+
     //Starts the game for user
     public void performNextLine() {
         Scanner scan = new Scanner(System.in);

@@ -3,6 +3,10 @@ package src;
 public class Main {
     public static void main(String[] args) {
 
+        if (args.length != 1) {
+            System.out.println("Expecting one argument");
+        }
+
         Prithee p1 = new Prithee("Two households, both alike in dignity,\n" +
                 "In fair Verona, where we lay our scene,\n" +
                 "From ancient grudge break to new mutiny,\n" +
